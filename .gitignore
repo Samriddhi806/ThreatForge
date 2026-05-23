@@ -1,0 +1,32 @@
+# ── Datasets (too large for GitHub) ──────────────────
+CICIDS/
+CTU/
+data/raw/
+data/processed/
+data/synthetic/
+
+# ── Trained models (large binary files) ──────────────
+models/
+*.pkl
+
+# ── Logs and plots ────────────────────────────────────
+logs/
+*.png
+*.jpg
+
+# ── Python environment ────────────────────────────────
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# ── VS Code settings ──────────────────────────────────
+.vscode/
+
+# ── Jupyter checkpoints ───────────────────────────────
+.ipynb_checkpoints/
+
+# ── OS files ─────────────────────────────────────────
+.DS_Store
+Thumbs.db
