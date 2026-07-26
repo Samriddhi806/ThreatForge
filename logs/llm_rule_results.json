@@ -1,0 +1,44 @@
+[
+  {
+    "attack": "Botnet",
+    "status": "api_error",
+    "rule": null,
+    "attack_type": "Botnet"
+  },
+  {
+    "attack": "Bruteforce",
+    "status": "api_error",
+    "rule": null,
+    "attack_type": "Bruteforce"
+  },
+  {
+    "attack": "DDoS",
+    "status": "api_error",
+    "rule": null,
+    "attack_type": "DDoS"
+  },
+  {
+    "attack": "DoS",
+    "status": "api_error",
+    "rule": null,
+    "attack_type": "DoS"
+  },
+  {
+    "attack": "Infiltration",
+    "status": "api_error",
+    "rule": null,
+    "attack_type": "Infiltration"
+  },
+  {
+    "attack": "Portscan",
+    "status": "api_error",
+    "rule": null,
+    "attack_type": "Portscan"
+  },
+  {
+    "attack": "WebAttacks",
+    "status": "api_error",
+    "rule": null,
+    "attack_type": "WebAttacks"
+  }
+]

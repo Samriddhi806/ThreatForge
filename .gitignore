@@ -1,32 +1,43 @@
-# ── Datasets (too large for GitHub) ──────────────────
+# Datasets 
 CICIDS/
 CTU/
+
+# Processed data
 data/raw/
 data/processed/
 data/synthetic/
 
-# ── Trained models (large binary files) ──────────────
-models/
-*.pkl
+# Trained models 
+models/*.pkl
+models/gan_ckpt/
 
-# ── Logs and plots ────────────────────────────────────
-logs/
-*.png
-*.jpg
+# Logs and plots
+logs/*.png
+logs/*.npy
+logs/shap/
 
-# ── Python environment ────────────────────────────────
+# Keep metrics JSON (small, useful to share) 
+!logs/baseline_metrics.json
+!logs/gan_results.json
+!logs/robust_metrics.json
+!logs/llm_rule_results.json
+
+# Generated rules (keep these — they're small) 
+# generated_rules/*.rules  ← commented out = will be uploaded
+
+# Python environment 
 venv/
 __pycache__/
 *.pyc
 *.pyo
 .env
 
-# ── VS Code settings ──────────────────────────────────
+# VS Code 
 .vscode/
 
-# ── Jupyter checkpoints ───────────────────────────────
+# Jupyter 
 .ipynb_checkpoints/
 
-# ── OS files ─────────────────────────────────────────
+# OS files 
 .DS_Store
 Thumbs.db

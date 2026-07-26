@@ -1,0 +1,15 @@
+{
+  "model": "gan_augmented",
+  "f1": 0.9118,
+  "auc": 0.8146,
+  "fpr": 0.7424,
+  "tp": 275945,
+  "fp": 51096,
+  "fn": 2302,
+  "tn": 17729,
+  "n_train": 1819608,
+  "baseline_f1": 0.9126,
+  "baseline_fpr": 0.7329,
+  "f1_improvement": -0.0008,
+  "fpr_reduction": -0.0095
+}

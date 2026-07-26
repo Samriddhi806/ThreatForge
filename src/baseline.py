@@ -1,4 +1,4 @@
-# src/baseline.py — Phase 1 Final: XGBoost Baseline Classifier
+# Phase 1 Final: XGBoost Baseline Classifier
 import pandas as pd
 import numpy as np
 import xgboost as xgb
@@ -12,7 +12,7 @@ print("=" * 55)
 print("  Phase 1 — XGBoost Baseline Classifier")
 print("=" * 55)
 
-# ── 1. Load splits ────────────────────────────────────────
+# 1. Load splits 
 print("\n[1/5] Loading train/val/test splits...")
 train = pd.read_parquet("data/processed/train.parquet")
 val   = pd.read_parquet("data/processed/val.parquet")
@@ -33,7 +33,7 @@ y_test  = test['binary_label'].values
 print(f"      Train: {X_train.shape}, Val: {X_val.shape}, Test: {X_test.shape}")
 print(f"      Features: {len(feature_cols)}")
 
-# ── 2. Train baseline XGBoost ─────────────────────────────
+#  2. Train baseline XGBoost
 print("\n[2/5] Training XGBoost baseline (this may take 3-5 mins)...")
 t0 = time.time()
 
@@ -60,7 +60,7 @@ model.fit(
 elapsed = time.time() - t0
 print(f"\n      Training complete in {elapsed:.1f}s")
 
-# ── 3. Evaluate on test set ───────────────────────────────
+# 3. Evaluate on test set 
 print("\n[3/5] Evaluating on held-out test set...")
 y_pred      = model.predict(X_test)
 y_pred_prob = model.predict_proba(X_test)[:, 1]
@@ -71,15 +71,15 @@ tn  = ((y_pred == 0) & (y_test == 0)).sum()
 fp  = ((y_pred == 1) & (y_test == 0)).sum()
 fpr = fp / (fp + tn) if (fp + tn) > 0 else 0
 
-print(f"\n  ── Baseline Metrics (RECORD THESE) ──────────────")
+print(f"\n Baseline Metrics (RECORD THESE):")
 print(f"  F1 Score       : {f1:.4f}")
 print(f"  ROC-AUC        : {auc:.4f}")
 print(f"  False Pos Rate : {fpr:.4f}  ({fp:,} false alarms)")
-print(f"  ─────────────────────────────────────────────────")
+
 print(f"\n{classification_report(y_test, y_pred, target_names=['Benign','Attack'])}")
 
 # Per-class F1 on multiclass
-print("\n  ── Per Attack Class F1 ──────────────────────────")
+print("\n  Per Attack Class F1")
 test_multi = test.copy()
 test_multi['pred'] = y_pred
 for cls in test['attack_type'].unique():
@@ -90,7 +90,7 @@ for cls in test['attack_type'].unique():
     bar = "█" * int(acc // 5)
     print(f"  {cls:15s}: {acc:5.1f}%  {bar}")
 
-# ── 4. Save model and results ─────────────────────────────
+# 4. Save model and results
 print("\n[4/5] Saving model and plots...")
 os.makedirs("models", exist_ok=True)
 os.makedirs("logs",   exist_ok=True)
@@ -136,11 +136,10 @@ plt.show()
 print("      Saved → logs/baseline_feature_importance.png")
 
 # ── 5. Summary ────────────────────────────────────────────
-print("\n[5/5] ✅ Baseline complete!")
-print(f"\n  ┌─────────────────────────────────────────┐")
-print(f"  │  BASELINE SCORE TO BEAT WITH GAN        │")
-print(f"  │  F1  : {f1:.4f}                           │")
-print(f"  │  AUC : {auc:.4f}                           │")
-print(f"  │  FPR : {fpr:.4f}                           │")
-print(f"  └─────────────────────────────────────────┘")
+print("\n  Baseline complete!")
+print(f"\n ----------------------------------------------------")
+print(f"    BASELINE SCORE TO BEAT WITH GAN        ")
+print(f"    F1  : {f1:.4f}                           ")
+print(f"    AUC : {auc:.4f}                           ")
+print(f"    FPR : {fpr:.4f}                           ")
 print("\n  Next: run python src/train_gan.py  (Phase 2)")
